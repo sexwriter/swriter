@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html>
+<head>
+<link rel="stylesheet" href="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.css">
+<script src="http://code.jquery.com/jquery-1.8.3.min.js"></script>
+<script src="http://code.jquery.com/mobile/1.3.2/jquery.mobile-1.3.2.min.js"></script>
+
+   <script>
+// This function will be called when the JSONP script returns. It needs to be evaluated
+// before the script with the JSONP call.
+var processJSONs = function (json) {
+    //var monkey_photos = document.getElementById('Kategorier');
+    //var container = document.createElement('div');
+
+    // Initialize a var for new elements
+    //var div;
+
+    // Build a list of images
+    //for (var item in json.items) {
+     //   div = document.createElement('div');
+      //  div.innerHTML = json.items[item].id;
+       // container.appendChild(div);
+   // }
+
+    //monkey_photos.appendChild(container);
+};
+var top10 = function (json) {
+	var list = $('#taskList');
+		
+	 
+	 //var monkey_photos = document.getElementById('hesthest');
+    //var container = document.createElement('div');
+    //var div;
+
+    for (var item in json.items) {
+        //div = document.createElement('div');
+        //div.innerHTML = "<a href=vis.aspx?id="+json.items[item].id+">"+json.items[item].value;+"</a>"
+		var hest = json.items[item].value;
+		var hiid = json.items[item].id;
+		list.append('<li><a rel=external href=vishistorie.html?historieid='+hiid+'>'+hest+'</a></li>');  
+		
+        //container.appendChild(div);
+    }
+    list.listview("refresh");
+
+    //monkey_photos.appendChild(container);
+};
+
+
+</script>
+
+ </head>
+<body>
+
+ 
+<div data-role="page" id="pageone">
+
+
+  <div data-role="header">
+  <h1>Top 100 historier</h1>
+  </div>
+
+  <div data-role="content" id="matches">
+ 
+ <ol id="taskList" data-role="listview" data-role="listview" data-filter="true" data-filter-placeholder="Søg historie..." data-inset="true"></ol>
+ 
+ 
+
+
+  </div>
+
+  <div data-role="footer">
+  <h1>Sexwriter.dk</h1>
+  </div>
+</div> 
+
+</body>
+</html>
+ <script src='http://app.sexwriter.dk/defaultz.aspx?jsoncallback=top10&show=top10&tags=monkey&tagmode=any&format=json'></script> 
